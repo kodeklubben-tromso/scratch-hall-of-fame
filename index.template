@@ -1,0 +1,21 @@
+<html>
+<head>
+
+<style>
+
+#projects {
+text-align:center;
+}
+
+</style>
+</head>
+    <body>
+        {{ range . }} 
+        <div id="projects"> 
+            <h3> {{ .Title }} </h3> <h6> av {{.Creator.Username}} </h6> </br>
+            <a href="http://scratch.mit.edu/projects/{{.ID}}"><img
+            src="http://{{.Thumbnail}}"></img></a>
+        </div> 
+        {{ end }} 
+    </body> 
+</html>
