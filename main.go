@@ -11,6 +11,10 @@ import (
 
 func main() {
 	projects, err := GetProjects("ids")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	f, err := os.OpenFile("index.html", os.O_WRONLY|os.O_CREATE, 0600)
 	if err != nil {
@@ -38,7 +42,8 @@ func GetProjects(filename string) ([]*scratch.Project, error) {
 		id := scanner.Text()
 		p, err := scratch.GetProject(id)
 		if err != nil {
-			return nil, err
+			fmt.Println("Could not get project ", id)
+			continue
 		}
 		projects = append(projects, p)
 	}
